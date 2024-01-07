@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Bugeto_Store.Infrastructure/1.0.0": {
+        "runtime": {
+          "Bugeto_Store.Infrastructure.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Bugeto_Store.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

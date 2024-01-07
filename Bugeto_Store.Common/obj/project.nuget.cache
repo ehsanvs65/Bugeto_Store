@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "2FQdseSG8t3FaEeBJQxFXA6x6qQMAGs835lHJ0jvJajvUsW0ZAPzvneTHqloQ7uF8a/TCzDMN4nnn30581Pv7g==",
+  "success": true,
+  "projectFilePath": "D:\\asp\\project\\Bugeto_Store\\Bugeto_Store.Common\\Bugeto_Store.Common.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lenovo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.25\\microsoft.aspnetcore.cryptography.internal.6.0.25.nupkg.sha512",
+    "C:\\Users\\lenovo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.25\\microsoft.aspnetcore.cryptography.keyderivation.6.0.25.nupkg.sha512"
+  ],
+  "logs": []
+}

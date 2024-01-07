@@ -1,0 +1,46 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "6909f944-0e6a-4099-a3f1-5844d34815d4": {
+      "ProjectGuid": "6909f944-0e6a-4099-a3f1-5844d34815d4",
+      "DisplayName": "Bugeto_Store.Domain",
+      "ColorIndex": 0
+    },
+    "a1a97147-7060-48d1-9182-2851db4ae87b": {
+      "ProjectGuid": "a1a97147-7060-48d1-9182-2851db4ae87b",
+      "DisplayName": "Bugeto_Store.Application",
+      "ColorIndex": 1
+    },
+    "8d4e5b50-92e3-4d22-86b4-ff572e20eb8b": {
+      "ProjectGuid": "8d4e5b50-92e3-4d22-86b4-ff572e20eb8b",
+      "DisplayName": "Bugeto_Store.Infrastructure",
+      "ColorIndex": 2
+    },
+    "f28d2297-60fd-47fd-bc28-195d349d66fa": {
+      "ProjectGuid": "f28d2297-60fd-47fd-bc28-195d349d66fa",
+      "DisplayName": "Bugeto_Store.Presentation",
+      "ColorIndex": 3
+    },
+    "5928f078-e287-4cd6-b096-2fdcc7822838": {
+      "ProjectGuid": "5928f078-e287-4cd6-b096-2fdcc7822838",
+      "DisplayName": "Bugeto_Store.Common",
+      "ColorIndex": 4
+    },
+    "508cd988-c876-4c1e-afad-5301a272b801": {
+      "ProjectGuid": "508cd988-c876-4c1e-afad-5301a272b801",
+      "DisplayName": "EndPoint.Site",
+      "ColorIndex": 5
+    },
+    "212a5143-d215-475a-a1e3-3b6a09efaaa5": {
+      "ProjectGuid": "212a5143-d215-475a-a1e3-3b6a09efaaa5",
+      "DisplayName": "EndPoint.Site",
+      "ColorIndex": 6
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 7
+}
