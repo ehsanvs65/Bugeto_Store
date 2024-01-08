@@ -1,46 +1,65 @@
-﻿using Bugeto_Store.Application.Services.Users.Commands.RegisterUser;
-using Bugeto_Store.Application.Services.Users.Commands.UserLogin;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Bugeto_Store.Application.Services.Users.Commands.EditUser;
+using Bugeto_Store.Application.Services.Users.Commands.RegisterUser;
+using Bugeto_Store.Application.Services.Users.Commands.RemoveUser;
+using Bugeto_Store.Application.Services.Users.Commands.UserSatusChange;
 using Bugeto_Store.Application.Services.Users.Queries.GetRoles;
 using Bugeto_Store.Application.Services.Users.Queries.GetUsers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace EndPoint.Site.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class UsersController : Controller
     {
-
-        private readonly IGetUsersService _getUserService;
+        private readonly IGetUsersService _getUsersService;
         private readonly IGetRolesService _getRolesService;
         private readonly IRegisterUserService _registerUserService;
-        private readonly IUserLoginService _userLoginService;
-
+        private readonly IRemoveUserService _removeUserService;
+        private readonly IUserSatusChangeService _userSatusChangeService;
+        private readonly IEditUserService _editUserService;
         public UsersController(IGetUsersService getUsersService
-            ,IGetRolesService getRolesService
-            ,IRegisterUserService registerUserService
-            ,IUserLoginService userLoginService
-            )
+            , IGetRolesService getRolesService
+            , IRegisterUserService registerUserService
+            , IRemoveUserService removeUserService
+            , IUserSatusChangeService userSatusChangeService
+            , IEditUserService editUserService)
         {
-            _getUserService = getUsersService;
+            _getUsersService = getUsersService;
             _getRolesService = getRolesService;
             _registerUserService = registerUserService;
-            _userLoginService = userLoginService;
-        }    
-        public IActionResult Index(string searchkey,int page=1)
+            _removeUserService = removeUserService;
+            _userSatusChangeService = userSatusChangeService;
+            _editUserService = editUserService;
+        }
+
+
+        public IActionResult Index(string serchkey, int page = 1)
         {
-            return View(_getUserService.Execute(new RequestGetUserDto
+            return View(_getUsersService.Execute(new RequestGetUserDto
             {
                 Page = page,
-                SearchKey=searchkey,
+                SearchKey = serchkey,
             }));
         }
+
+
+
+
+
         [HttpGet]
         public IActionResult Create()
         {
             ViewBag.Roles = new SelectList(_getRolesService.Execute().Data, "Id", "Name");
             return View();
         }
+
+
         [HttpPost]
         public IActionResult Create(string Email, string FullName, long RoleId, string Password, string RePassword)
         {
@@ -60,5 +79,28 @@ namespace EndPoint.Site.Areas.Admin.Controllers
             });
             return Json(result);
         }
+
+        [HttpPost]
+        public IActionResult Delete(long UserId)
+        {
+            return Json(_removeUserService.Execute(UserId));
+        }
+
+        [HttpPost]
+        public IActionResult UserSatusChange(long UserId)
+        {
+            return Json(_userSatusChangeService.Execute(UserId));
+        }
+
+        [HttpPost]
+        public IActionResult Edit(long UserId, string Fullname)
+        {
+            return Json(_editUserService.Execute(new RequestEdituserDto
+            {
+                Fullname = Fullname,
+                UserId = UserId,
+            }));
+        }
+
     }
 }
