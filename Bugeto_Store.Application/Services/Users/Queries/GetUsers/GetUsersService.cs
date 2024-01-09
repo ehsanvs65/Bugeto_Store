@@ -23,7 +23,8 @@ namespace Bugeto_Store.Application.Services.Users.Queries.GetUsers
             {
                 Email=p.Email,
                 FullName=p.FullName,
-                id=p.Id,
+                Id=p.Id,
+                IsActive=p.IsActive,
             }).ToList();
             return new ResultGetUserDto
             {

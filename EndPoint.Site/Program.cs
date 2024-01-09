@@ -1,8 +1,11 @@
 using Bugeto_Store.Application.Interfaces.Contexts;
 using Bugeto_Store.Application.Interfaces.FacadPatterns;
 using Bugeto_Store.Application.Services.Products.FacadPattern;
+using Bugeto_Store.Application.Services.Users.Commands.EditUser;
 using Bugeto_Store.Application.Services.Users.Commands.RegisterUser;
+using Bugeto_Store.Application.Services.Users.Commands.RemoveUser;
 using Bugeto_Store.Application.Services.Users.Commands.UserLogin;
+using Bugeto_Store.Application.Services.Users.Commands.UserSatusChange;
 using Bugeto_Store.Application.Services.Users.Queries.GetRoles;
 using Bugeto_Store.Application.Services.Users.Queries.GetUsers;
 using Bugeto_Store.Persistence.Contexts;
@@ -28,6 +31,9 @@ builder.Services.AddScoped<IGetUsersService, GetUsersService>();
 builder.Services.AddScoped<IGetRolesService, GetRolesService>();
 builder.Services.AddScoped<IRegisterUserService, RegisterUserService>();
 builder.Services.AddScoped<IUserLoginService, UserLoginService>();
+builder.Services.AddScoped<IRemoveUserService, RemoveUserService>();
+builder.Services.AddScoped<IUserSatusChangeService, UserSatusChangeService>();
+builder.Services.AddScoped<IEditUserService, EditUserService>();
 builder.Services.AddScoped<IProductFacad, ProductFacad>();
 
 string connectionstring = "Data Source=.; Initial Catalog=Bugeto_StoreDb; Integrated Security=True;";

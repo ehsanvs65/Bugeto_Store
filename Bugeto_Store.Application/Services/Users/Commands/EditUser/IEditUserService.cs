@@ -31,7 +31,7 @@ namespace Bugeto_Store.Application.Services.Users.Commands.EditUser
                     Message = "کاربر یافت نشد"
                 };
             }
-
+            user.Email= request.Email;
             user.FullName = request.Fullname;
             _context.SaveChanges();
 
@@ -49,5 +49,6 @@ namespace Bugeto_Store.Application.Services.Users.Commands.EditUser
     {
         public long UserId { get; set; }
         public string Fullname { get; set; }
+        public string Email { get; set; }
     }
 }
