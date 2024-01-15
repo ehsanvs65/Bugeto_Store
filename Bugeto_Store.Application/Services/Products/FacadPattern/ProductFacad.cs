@@ -1,6 +1,7 @@
 ﻿using Bugeto_Store.Application.Interfaces.Contexts;
 using Bugeto_Store.Application.Interfaces.FacadPatterns;
 using Bugeto_Store.Application.Services.Products.Commands.AddNewCategory;
+using Bugeto_Store.Application.Services.Products.Commands.EditCategory;
 using Bugeto_Store.Application.Services.Products.Queries.GetCategories;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,14 @@ namespace Bugeto_Store.Application.Services.Products.FacadPattern
             get
             {
                 return _getCategoriesService = _getCategoriesService ?? new GetCategoriesService(_context);
+            }
+        }
+        private IEditCategoryService _editCategoryService;
+        public IEditCategoryService EditCategoryService
+        {
+            get
+            {
+                return _editCategoryService = _editCategoryService ?? new EditCategoryService(_context);
             }
         }
     }

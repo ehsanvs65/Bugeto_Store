@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Bugeto_Store.Application.Interfaces.FacadPatterns;
+using Bugeto_Store.Application.Services.Products.Commands.EditCategory;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EndPoint.Site.Areas.Admin.Controllers
@@ -38,6 +39,15 @@ namespace EndPoint.Site.Areas.Admin.Controllers
         {
             var result = _productFacad.AddNewCategoryService.Execute(ParentId, Name);
             return Json(result);
+        }
+        [HttpPost]
+        public IActionResult Edit(long Id,string Name)
+        {
+            return Json(_productFacad.EditCategoryService.Execute(new RequestEditCategoryDto
+            {
+                Name = Name,
+                Id = Id,
+            }));
         }
     }
 }

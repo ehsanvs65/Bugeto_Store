@@ -1,4 +1,5 @@
 ﻿using Bugeto_Store.Application.Services.Products.Commands.AddNewCategory;
+using Bugeto_Store.Application.Services.Products.Commands.EditCategory;
 using Bugeto_Store.Application.Services.Products.Queries.GetCategories;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace Bugeto_Store.Application.Interfaces.FacadPatterns
     {
         AddNewCategoryService AddNewCategoryService { get; }
         IGetCategoriesService  GetCategoriesService { get; }
+        IEditCategoryService EditCategoryService { get; }
     }
 }

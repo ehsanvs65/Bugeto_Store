@@ -1,5 +1,6 @@
 ﻿@using Bugeto_Store.Application.Services.Products.Queries.GetCategories;
 @model List<CategoriesDto>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Adminlayout.cshtml";
@@ -9,7 +10,6 @@
     <div class="container-fluid">
         <!-- Zero configuration table -->
         <section id="configuration">
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -58,6 +58,9 @@
                                                             <a href="~/admin/categories/index?ParentId=@item.Id" class="btn btn-info">مشاهده لیست فرزند ها </a>
                                                         }
 
+                                                        <button class="btn btn-warning" onclick="ShowModalEditCategory('@item.Id','@item.Name')" > ویرایش </button>
+
+                                                        <button class="btn btn-danger" > حذف </button>
                                                     </td>
                                                 </tr>
                                             }
@@ -73,3 +76,96 @@
         </section>
     </div>
 </div>
+
+@section Scripts
+{
+
+    <link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <script src="~/Sweetalert2/sweetalert2.min.js"></script>
+
+
+    <script>
+
+        function EditCategory() {
+
+            var Id = $("#Edit_Id").val();
+            var Name = $("#Edit_Name").val();
+
+            var postData = {
+                'Id': Id,
+                'Name': Name,
+            };
+
+
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: 'json',
+                type: "POST",
+                url: "Edit",
+                data: postData,
+                success: function (data) {
+                    if (data.isSuccess == true) {
+                        swal.fire(
+                            'موفق!',
+                            data.message,
+                            'success'
+                        ).then(function (isConfirm) {
+                            location.reload();
+                        });
+                    }
+                    else {
+                        swal.fire(
+                            'هشدار!',
+                            data.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                }
+            });
+
+            $('#EditCategory').modal('hide');
+
+        }
+
+
+        function ShowModalEditCategory(Id,Name) {
+            $('#Edit_Name').val(Name)
+            $('#Edit_Id').val(Id)
+            $('#EditCategory').modal('show');
+        }
+    </Script>
+}
+
+
+@section Modals
+{
+    <!-- Modal Edit Category -->
+    <div class="modal fade" id="EditCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">ویرایش دسته بندی</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                        <fieldset class="form-group">
+                            <input type="hidden" id="Edit_Id" />
+                            <label for="basicInput">نام</label>
+                            <input type="text" class="form-control" id="Edit_Name">
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a  class="btn btn-secondary" data-dismiss="modal">بستن</a>
+                    <a  class="btn btn-primary" onclick="EditCategory()">اعمال تغییرات</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
